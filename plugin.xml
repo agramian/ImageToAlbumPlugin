@@ -1,24 +1,14 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="org.agramian.ImageToAlbumPlugin"
-    version="0.6.0">
-
+    id="org.agramian.ImageToAlbumPlugin" version="0.6.0">
     <name>Image To Album</name>
-
-    <engines>
-        <engine name="cordova" version=">=3.0.0" />
-    </engines>
-
     <description>Cordova plugin to save image data to an iPhone, Android, or Windows Phone 8 Photo Album/Library.</description>
     <author>Abtin Gramian - abtin.gramian@gmail.com</author>
     <keywords>canvas,image,photo album, library, create album</keywords>
-
     <license>MIT</license>
-
     <js-module src="www/ImageToAlbumPlugin.js" name="ImageToAlbumPlugin">
         <clobbers target="window.ImageToAlbumPlugin" />
     </js-module>
-
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -27,31 +17,22 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-
         <header-file src="src/ios/ImageToAlbumPlugin.h" />
-
-        <source-file src="src/ios/ImageToAlbumPlugin.m"
-            compiler-flags="-fno-objc-arc" />
+        <source-file src="src/ios/ImageToAlbumPlugin.m" />
     </platform>
-
     <!-- android -->
     <platform name="android">
-
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
-
         <config-file target="res/xml/config.xml" parent="/*">
           <feature name="ImageToAlbumPlugin" >
             <param name="android-package" value="org.agramian.ImageToAlbumPlugin.ImageToAlbumPlugin"/>
           </feature>
         </config-file>
-
         <source-file src="src/android/ImageToAlbumPlugin.java" 
             target-dir="src/org/devgeeks/ImageToAlbumPlugin" />
-
     </platform>
-
     <!-- wp8 -->
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
@@ -60,11 +41,9 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        
         <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
             <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
         </config-file>
-
         <source-file src="src/wp8/ImageToAlbumPlugin.cs" />
     </platform>
 </plugin>

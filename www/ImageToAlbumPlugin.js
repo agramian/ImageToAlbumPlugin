@@ -7,17 +7,11 @@
 //  MIT Licensed
 //
 
-module.exports = { 
-	echo: function(str, callback) {
-		console.log("calling plugin echo");
-	    return cordova.exec(callback, function(err) {
-	        callback('Nothing to echo.');
-	    }, "Echo", "echo", [str]);
-	},	
+module.exports = {	
 	saveImageDataToLibrary:function(successCallback,
 									failureCallback,
 									imageData,
-									directoryPath,
+									albumName,
 									filename) {
 		console.log('save iamge to library');
         if (typeof successCallback != "function") {
@@ -26,9 +20,19 @@ module.exports = {
         else if (typeof failureCallback != "function") {
             console.log("ImageToAlbumPlugin Error: failureCallback is not a function");
         }
+        else if (typeof albumName != "string" || albumName.length < 1) {
+            console.log("ImageToAlbumPlugin Error: albumName must be a string at least one character long");
+        }
+		else if (typeof filename != "string" || filename.length < 1) {
+            console.log("ImageToAlbumPlugin Error: filename must be a string at least one character long");
+        }              
         else {
-            //return cordova.exec(successCallback, failureCallback, "ImageToAlbumPlugin","saveImageDataToLibrary",[imageData]);
-            return cordova.exec(successCallback, failureCallback, "ImageToAlbumPlugin","saveImageDataToLibrary",[imageData]);
+            return cordova.exec(
+            	successCallback,
+            	failureCallback,
+            	"ImageToAlbumPlugin",
+            	"saveImageDataToLibrary",
+            	[imageData, albumName, filename]);
         }
     }
 };
