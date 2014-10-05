@@ -16,8 +16,8 @@
 - (void)saveImageDataToLibrary:(CDVInvokedUrlCommand*)command
 {
     ALAssetsLibrary* libraryFolder = [[ALAssetsLibrary alloc] init];
-    NSData* imageData = [NSData dataFromBase64String:[command.arguments objectAtIndex:0]];
-    NSString* albumName = [command.arguments objectAtIndex:1];
+    NSData* imageData = [NSData dataFromBase64String:[command.arguments argumentAtIndex:0]];
+    NSString* albumName = [command.arguments argumentAtIndex:1];
     [libraryFolder addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group)
     {
         NSLog(@"Adding Folder:'%@', success: %s", albumName, group.editable ? "Success" : "Already created: Not Success");
