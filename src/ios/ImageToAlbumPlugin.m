@@ -1,17 +1,17 @@
 //
-//  Canvas2ImagePlugin.m
-//  Canvas2ImagePlugin PhoneGap/Cordova plugin
+//  ImageToAlbumPlugin.m
+//  ImageToAlbumPlugin PhoneGap/Cordova plugin
 //
 //  Created by Abtin Gramian on 10/05/14.
 //  Copyright (c) 2012 Abtin Gramian. All rights reserved.
 //	MIT Licensed
 //
 
-#import "Canvas2ImagePlugin.h"
+#import "ImageToAlbumPlugin.h"
 #import <Cordova/CDV.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@implementation Canvas2ImagePlugin
+@implementation ImageToAlbumPlugin
 @synthesize callbackId;
 
 - (void)saveImageDataToLibrary:(CDVInvokedUrlCommand*)command
@@ -20,16 +20,17 @@
 	NSData* imageData = [NSData dataFromBase64String:[command.arguments objectAtIndex:0]];
 	NSString *albumName = @"PicFlik";
 	UIImage* image = [[[UIImage alloc] initWithData:imageData] autorelease];
-    
+    NSString *message;
     ALAssetsLibrary* libraryFolder = [[ALAssetsLibrary alloc] init];
     [libraryFolder addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group)
     {
-        NSLog(@"Adding Folder:'%@', success: %s", albumName, group.editable ? "Success" : "Already created: Not Success");
+       message = (@"Adding Folder:'%@', success: %s", albumName, group.editable ? "Success" : "Already created: Not Success");
     } failureBlock:^(NSError *error)
     {
-        NSLog(@"Error: Adding on Folder");
+        message @"Error: Adding on Folder";
     }];
-    [image didFinishSavingWithError:nil];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:message];
+    [self.webView stringByEvaluatingJavaScriptFromString:[result toSuccessCallbackString: self.callbackId]];
     /*
     [self.library addAssetsGroupAlbumWithName:albumName
                                   resultBlock:^(ALAssetsGroup *group) {

@@ -1,20 +1,20 @@
-Canvas2ImagePlugin
+ImageToAlbumPlugin
 ============
 
-This plugin allows you to save the contents of an HTML canvas tag to the iOS Photo Library, Android Gallery or WindowsPhone 8 Photo Album from your app.
+This plugin allows you to save base64 encoded image data (such as that received from an HTML5 canvas) to the iOS, Android, or Windows Phone 8 camera roll from you Cordova app.
 
 Installation
 ------------
 
 ### For Cordova 3.x.x:
 
-1. To add this plugin just type: 'cordova plugin add https://github.com/agramian/Canvas2ImagePlugin.git'
-2. To remove this plugin type: 'cordova plugin remove org.agramian.Canvas2ImagePlugin'
+1. To add this plugin just type: 'cordova plugin add https://github.com/agramian/ImageToAlbumPlugin.git'
+2. To remove this plugin type: 'cordova plugin remove org.agramian.ImageToAlbumPlugin'
 
 Usage:
 ------
 
-Call the 'window.canvas2ImagePlugin.saveImageDataToLibrary()' method using success and error callbacks
+Call the 'window.ImageToAlbumPlugin.saveImageDataToLibrary()' method using success and error callbacks
 ### Example
 ```html
 <canvas id="myCanvas" width="165px" height="145px"></canvas>
@@ -26,7 +26,7 @@ function onDeviceReady()
 	imageData = document.getElementById('myCanvas').toDataURL("image/png").split(',')[1];
 	directoryPath = "My Album/Pics"
 	filename = "myphoto.png"
-	window.canvas2ImagePlugin.saveImageDataToLibrary(
+	window.ImageToAlbumPlugin.saveImageDataToLibrary(
         function(msg){
             console.log(msg);
         },

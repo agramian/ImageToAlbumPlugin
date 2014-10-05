@@ -1,4 +1,4 @@
-package org.devgeeks.Canvas2ImagePlugin;
+package org.agramian.ImageToAlbumPlugin;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,15 +20,13 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * Canvas2ImagePlugin.java
+ * ImageToAlbumPlugin.java
  *
- * Android implementation of the Canvas2ImagePlugin for iOS.
- * Inspirated by Joseph's "Save HTML5 Canvas Image to Gallery" plugin
- * http://jbkflex.wordpress.com/2013/06/19/save-html5-canvas-image-to-gallery-phonegap-android-plugin/
+ * Android implementation of the ImageToAlbumPlugin.
  *
- * @author Vegard Løkken <vegard@headspin.no>
+ * @author ImageToAlbumPlugin <abtin.gramian@gmail.como>
  */
-public class Canvas2ImagePlugin extends CordovaPlugin {
+public class ImageToAlbumPlugin extends CordovaPlugin {
 	public static final String ACTION = "saveImageDataToLibrary";
 
 	@Override
@@ -42,7 +40,7 @@ public class Canvas2ImagePlugin extends CordovaPlugin {
 				callbackContext.error("Missing base64 string");
 			
 			// Create the bitmap from the base64 string
-			Log.d("Canvas2ImagePlugin", base64);
+			Log.d("ImageToAlbumPlugin", base64);
 			byte[] decodedString = Base64.decode(base64, Base64.DEFAULT);
 			Bitmap bmp = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 			if (bmp == null) {
@@ -79,7 +77,7 @@ public class Canvas2ImagePlugin extends CordovaPlugin {
 					+ c.get(Calendar.SECOND);
 
 			String deviceVersion = Build.VERSION.RELEASE;
-			Log.i("Canvas2ImagePlugin", "Android version " + deviceVersion);
+			Log.i("ImageToAlbumPlugin", "Android version " + deviceVersion);
 			int check = deviceVersion.compareTo("2.3.3");
 
 			File folder;
@@ -108,7 +106,7 @@ public class Canvas2ImagePlugin extends CordovaPlugin {
 
 			retVal = imageFile;
 		} catch (Exception e) {
-			Log.e("Canvas2ImagePlugin", "An exception occured while saving image: "
+			Log.e("ImageToAlbumPlugin", "An exception occured while saving image: "
 					+ e.toString());
 		}
 		return retVal;

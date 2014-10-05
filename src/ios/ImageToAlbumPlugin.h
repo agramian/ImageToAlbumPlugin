@@ -1,6 +1,6 @@
 //
-//  Canvas2ImagePlugin.h
-//  Canvas2ImagePlugin PhoneGap/Cordova plugin
+//  ImageToAlbumPlugin.h
+//  ImageToAlbumPlugin PhoneGap/Cordova plugin
 //
 //  Created by Abtin Gramian on 10/05/16.
 //  Copyright (c) 2014 Abtin Gramian. All rights reserved.
@@ -10,7 +10,7 @@
 
 #import <Cordova/CDVPlugin.h>
 
-@interface Canvas2ImagePlugin : CDVPlugin
+@interface ImageToAlbumPlugin : CDVPlugin
 {
 	NSString* callbackId;
 }
