@@ -12,7 +12,6 @@ module.exports = {
 									imageData,
 									directoryPath,
 									filename) {
-		// successCallback required
         if (typeof successCallback != "function") {
         	console.log("Canvas2ImagePlugin Error: successCallback is not a function");
         }

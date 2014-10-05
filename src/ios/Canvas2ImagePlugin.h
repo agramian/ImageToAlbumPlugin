@@ -2,8 +2,8 @@
 //  Canvas2ImagePlugin.h
 //  Canvas2ImagePlugin PhoneGap/Cordova plugin
 //
-//  Created by Tommy-Carlos Williams on 29/03/12.
-//  Copyright (c) 2012 Tommy-Carlos Williams. All rights reserved.
+//  Created by Abtin Gramian on 10/05/16.
+//  Copyright (c) 2014 Abtin Gramian. All rights reserved.
 //	MIT Licensed
 //
 
