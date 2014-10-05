@@ -24,12 +24,12 @@
     ALAssetsLibrary* libraryFolder = [[ALAssetsLibrary alloc] init];
     [libraryFolder addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group)
     {
-        NSLog(@"Adding Folder:'%s', success: %s", albumName, group.editable ? "Success" : "Already created: Not Success");
+        NSLog(@"Adding Folder:'%@', success: %s", albumName, group.editable ? "Success" : "Already created: Not Success");
     } failureBlock:^(NSError *error)
     {
         NSLog(@"Error: Adding on Folder");
     }];
-    [self.webView stringByEvaluatingJavaScriptFromString:[result toSuccessCallbackString: self.callbackId]];
+    [image didFinishSavingWithError:nil];
     /*
     [self.library addAssetsGroupAlbumWithName:albumName
                                   resultBlock:^(ALAssetsGroup *group) {
@@ -79,12 +79,12 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     // Was there an error?
-    if (error != NULL)
+    if (error != nil)
     {
         // Show error message...
         NSLog(@"ERROR: %@",error);
 		CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_ERROR messageAsString:error.description];
-		[self.webView stringByEvaluatingJavaScriptFromString:[result toErrorCallbackString: self.callbackId]];
+		[self.webView stringByEvaluatingJavaScriptFromString:[result sendPluginResult: self.callbackId]];
     }
     else  // No errors
     {
