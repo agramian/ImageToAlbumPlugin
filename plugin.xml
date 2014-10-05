@@ -43,7 +43,7 @@
 
         <config-file target="res/xml/config.xml" parent="/*">
           <feature name="ImageToAlbumPlugin" >
-            <param name="android-package" value="org.devgeeks.ImageToAlbumPlugin.ImageToAlbumPlugin"/>
+            <param name="android-package" value="org.agramian.ImageToAlbumPlugin.ImageToAlbumPlugin"/>
           </feature>
         </config-file>
 
