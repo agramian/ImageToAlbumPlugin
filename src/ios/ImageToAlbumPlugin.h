@@ -11,11 +11,6 @@
 #import <Cordova/CDVPlugin.h>
 
 @interface ImageToAlbumPlugin : CDVPlugin
-{
-	NSString* callbackId;
-}
-
-@property (nonatomic, copy) NSString* callbackId;
 
 - (void)saveImageDataToLibrary:(CDVInvokedUrlCommand*)command;
 

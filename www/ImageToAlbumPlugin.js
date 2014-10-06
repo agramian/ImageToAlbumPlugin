@@ -13,7 +13,6 @@ module.exports = {
 									imageData,
 									albumName,
 									filename) {
-		console.log('save iamge to library');
         if (typeof successCallback != "function") {
         	console.log("ImageToAlbumPlugin Error: successCallback is not a function");
         }
