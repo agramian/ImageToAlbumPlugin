@@ -11,8 +11,7 @@ module.exports = {
 	saveImageDataToLibrary:function(successCallback,
 									failureCallback,
 									imageData,
-									albumName,
-									filename) {
+									albumName) {
         if (typeof successCallback != "function") {
         	console.log("ImageToAlbumPlugin Error: successCallback is not a function");
         }
@@ -21,17 +20,14 @@ module.exports = {
         }
         else if (typeof albumName != "string" || albumName.length < 1) {
             console.log("ImageToAlbumPlugin Error: albumName must be a string at least one character long");
-        }
-		else if (typeof filename != "string" || filename.length < 1) {
-            console.log("ImageToAlbumPlugin Error: filename must be a string at least one character long");
-        }              
+        }            
         else {
             return cordova.exec(
             	successCallback,
             	failureCallback,
             	"ImageToAlbumPlugin",
             	"saveImageDataToLibrary",
-            	[imageData, albumName, filename]);
+            	[imageData, albumName]);
         }
     }
 };
