@@ -9,8 +9,12 @@
 
 
 #import <Cordova/CDVPlugin.h>
+#import <Cordova/CDV.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ImageToAlbumPlugin : CDVPlugin
+
+@property (strong, atomic) ALAssetsLibrary* library;
 
 - (void)saveImageDataToLibrary:(CDVInvokedUrlCommand*)command;
 
